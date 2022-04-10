@@ -25,18 +25,18 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( 'Direct access not permitted.' );
 }
 
-if ( ! class_exists( 'plugin_name' ) ) {
+if ( ! class_exists( 'my_custom' ) ) {
 
 	/*
-	 * main plugin_name class
+	 * main my_custom class
 	 *
-	 * @class plugin_name
+	 * @class my_custom
 	 * @since 0.0.1
 	 */
-	class plugin_name {
+	class my_custom {
 
 		/*
-		 * plugin_name plugin version
+		 * my_custom plugin version
 		 *
 		 * @var string
 		 */
@@ -45,17 +45,17 @@ if ( ! class_exists( 'plugin_name' ) ) {
 		/**
 		 * The single instance of the class.
 		 *
-		 * @var plugin_name
+		 * @var my_custom
 		 * @since 0.0.1
 		 */
 		protected static $instance = null;
 
 		/**
-		 * Main plugin_name instance.
+		 * Main my_custom instance.
 		 *
 		 * @since 0.0.1
 		 * @static
-		 * @return plugin_name - main instance.
+		 * @return my_custom - main instance.
 		 */
 		public static function instance() {
 			if ( is_null( self::$instance ) ) {
@@ -65,7 +65,7 @@ if ( ! class_exists( 'plugin_name' ) ) {
 		}
 
 		/**
-		 * plugin_name class constructor.
+		 * my_custom class constructor.
 		 */
 		public function __construct() {
 			$this->load_plugin_textdomain();
@@ -75,16 +75,13 @@ if ( ! class_exists( 'plugin_name' ) ) {
 		}
 
 		public function load_plugin_textdomain() {
-			load_plugin_textdomain( 'plugin-name', false, basename( dirname( __FILE__ ) ) . '/lang/' );
+			load_plugin_textdomain( 'my-custom-text-domain', false, basename( dirname( __FILE__ ) ) . '/lang/' );
 		}
 
 		/**
 		 * Include required core files
 		 */
 		public function includes() {
-            // Example
-			require_once __DIR__ . '/includes/loader.php';
-
 			// Load custom functions and hooks
 			require_once __DIR__ . '/includes/includes.php';
 		}
@@ -100,29 +97,31 @@ if ( ! class_exists( 'plugin_name' ) ) {
 
 
 		/**
-		 * Define plugin_name constants
+		 * Define my_custom constants
 		 */
 		private function define_constants() {
-			define( 'PLUGIN_NAME_PLUGIN_FILE', __FILE__ );
-			define( 'PLUGIN_NAME_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
-			define( 'PLUGIN_NAME_VERSION', $this->version );
-			define( 'PLUGIN_NAME_PATH', $this->plugin_path() );
+			define( 'MY_CUSTOM_PLUGIN_FILE', __FILE__ );
+			define( 'MY_CUSTOM_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
+			define( 'MY_CUSTOM_VERSION', $this->version );
+			define( 'MY_CUSTOM_PATH', $this->plugin_path() );
+			define( 'MY_CUSTOM_WIDGETS_VIEWS', MY_CUSTOM_PATH.'/includes/views/widgets' );
+			define( 'MY_CUSTOM_TXDM', 'my-custom-text-domain' );
 		}
 
 		/**
-		 * Define plugin_name actions
+		 * Define my_custom actions
 		 */
 		public function define_actions() {
 			//
 		}
 
 		/**
-		 * Define plugin_name menus
+		 * Define my_custom menus
 		 */
 		public function define_menus() {
             //
 		}
 	}
 
-	$plugin_name = new plugin_name();
+	$my_custom = new my_custom();
 }
